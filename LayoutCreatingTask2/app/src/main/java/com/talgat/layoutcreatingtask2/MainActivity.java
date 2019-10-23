@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -17,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setTitle("Notes");
+        this.setTitle(R.string.main_activity_title);
 
-        TextView cardTitle = (TextView) findViewById(R.id.card_title);
-        cardTitle.setText("Note 1");
+        TextView cardTitle = findViewById(R.id.card_title);
+        cardTitle.setText(getString(R.string.note1));
 
         TextView date = findViewById(R.id.date);
-        date.setText("2019.09.10");
+        date.setText(R.string.date);
 
         CardView cardView = findViewById(R.id.card_view);
         cardView.setOnClickListener(new View.OnClickListener() {
@@ -34,14 +33,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button emailButton = findViewById(R.id.email_button);
-        emailButton.setBackgroundColor(Color.parseColor("#009688"));
 
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto","only.q@mail.ru", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Notes feedback");
+                        "mailto", String.valueOf(R.string.person_email), null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.email_content);
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
             }
         });
