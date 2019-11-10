@@ -27,14 +27,14 @@
             android:src="@drawable/big_image" />
 
         <TextView
-            android:id="@+id/big_text"
+            android:id="@+id/note_full_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/big_image_view"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/big_string"
+            android:text="@string/loading"
             android:textColor="#8A000000"
             android:textSize="16sp"/>
 
