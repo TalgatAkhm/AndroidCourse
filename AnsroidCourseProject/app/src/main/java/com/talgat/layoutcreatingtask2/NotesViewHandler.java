@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 
 public final class NotesViewHandler extends RecyclerView.ViewHolder {
-    private TextView noteTitleView;
-    private TextView noteTextView;
-    private TextView noteDateView;
-    private ImageView noteImageView;
+    private final TextView noteTitleView;
+    private final TextView noteTextView;
+    private final TextView noteDateView;
+    private final ImageView noteImageView;
     private long id;
 
     public NotesViewHandler(@NonNull View itemView, final NotesRvAdapter.Listener listener) {

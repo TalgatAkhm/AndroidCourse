@@ -18,13 +18,13 @@ public class NoteInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note_info);
 
         long id = getIntent().getLongExtra(ID_KEY, -1);
-        Note note = NotesHandler.getNoteById(id);
+        Note note = NotesStorage.getNoteById(id);
 
         TextView noteText = findViewById(R.id.note_full_text);
         noteText.setText(note.getText());
 
         ImageView noteImage = findViewById(R.id.big_image_view);
-        noteImage.setImageResource((int) note.getDrawableIdRes());
+        noteImage.setImageResource(note.getDrawableIdRes());
 
         this.setTitle(note.getTitle());
     }

@@ -8,9 +8,9 @@ public final class Note {
     private final Date date;
     private final String text;
     private final String title;
-    private final long drawableResId;
+    private final int drawableResId;
 
-    Note(int id, Date date, String text, String title, long drawableIdRes) {
+    Note(int id, Date date, String text, String title, int drawableIdRes) {
         this.id = id;
         this.date = date;
         this.text = text;
@@ -34,7 +34,7 @@ public final class Note {
         return title;
     }
 
-    public long getDrawableIdRes() {
+    public int getDrawableIdRes() {
         return drawableResId;
     }
 }

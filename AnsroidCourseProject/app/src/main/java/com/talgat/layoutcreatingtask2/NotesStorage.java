@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class NotesHandler {
+public final class NotesStorage {
     private static final Map<Long, Note> NOTE_MAP = new HashMap<>();
 
     private static final int NOTES_NUMBER = 100;
@@ -18,7 +18,7 @@ public final class NotesHandler {
             String title = "cat" + i;
             String text = i + "___" + context.getString(R.string.big_string);
             Date date = new Date(); // set to current time millis
-            long drawableResId = getImageResById(i % 3);
+            int drawableResId = getImageResById(i % 3);
 
             Note note = new Note(i, date, text, title, drawableResId);
 
@@ -26,7 +26,7 @@ public final class NotesHandler {
         }
     }
 
-    private NotesHandler() {
+    private NotesStorage() {
         // Empty
     }
 
@@ -38,7 +38,7 @@ public final class NotesHandler {
         return NOTE_MAP.get(id);
     }
 
-    private static long getImageResById(int id) {
+    private static int getImageResById(int id) {
         switch (id) {
             case 0:
                 return R.drawable.first_image;

@@ -16,16 +16,15 @@ public class MainActivity extends AppCompatActivity implements NotesRvAdapter.Li
         setContentView(R.layout.activity_main);
         this.setTitle(R.string.main_activity_title);
 
-        NotesHandler.create(this);
         final RecyclerView recyclerView = findViewById(R.id.notesRecyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 15);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 3);
 
         final NotesRvAdapter adapter = new NotesRvAdapter();
         recyclerView.setAdapter(adapter);
-        adapter.setNotes(NotesHandler.getNotes());
+        adapter.setNotes(NotesStorage.getNotes());
         adapter.setListener(this);
     }
 
