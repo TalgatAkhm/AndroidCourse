@@ -4,13 +4,13 @@ import java.util.Date;
 
 public final class Note {
 
-    private final int id;
+    private final long id;
     private final Date date;
     private final String text;
     private final String title;
     private final int drawableResId;
 
-    Note(int id, Date date, String text, String title, int drawableIdRes) {
+    Note(long id, Date date, String text, String title, int drawableIdRes) {
         this.id = id;
         this.date = date;
         this.text = text;
@@ -18,7 +18,7 @@ public final class Note {
         this.drawableResId = drawableIdRes;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
