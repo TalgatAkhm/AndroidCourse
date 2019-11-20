@@ -2,9 +2,11 @@ package com.talgat.layoutcreatingtask2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements NotesRvAdapter.Listener {
@@ -18,7 +20,11 @@ public class MainActivity extends AppCompatActivity implements NotesRvAdapter.Li
 
         final RecyclerView recyclerView = findViewById(R.id.notesRecyclerView);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        else
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         recyclerView.setHasFixedSize(true);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 3);
 
@@ -31,5 +37,17 @@ public class MainActivity extends AppCompatActivity implements NotesRvAdapter.Li
     @Override
     public void onNoteClick(long id) {
         startActivity(NoteInfoActivity.getIntent(this, id));
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        final RecyclerView recyclerView = findViewById(R.id.notesRecyclerView);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        else
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
