@@ -1,25 +1,18 @@
 package com.talgat.layoutcreatingtask2;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.res.Configuration;
-import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
-        if(savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.listContainer, ListFragment.create(), ListFragment.NAME)
@@ -29,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showDetailsFragment(@NonNull final long id) {
-        if(getSupportFragmentManager().findFragmentByTag(DetailsFragment.NAME) != null){
+        if (getSupportFragmentManager().findFragmentByTag(DetailsFragment.NAME) != null) {
             getSupportFragmentManager().popBackStack();
         }
 

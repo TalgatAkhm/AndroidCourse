@@ -42,13 +42,13 @@ public class ListFragment extends Fragment implements NotesRvAdapter.Listener {
 
         final RecyclerView recyclerView = view.findViewById(R.id.notesRecyclerView);
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+        if (shouldSetTwoSpan())
             recyclerView.setLayoutManager(new GridLayoutManager(currentFrameLayout.getContext(), 2));
         else
             recyclerView.setLayoutManager(new LinearLayoutManager(currentFrameLayout.getContext()));
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 3);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 4);
 
         final NotesRvAdapter adapter = new NotesRvAdapter();
         recyclerView.setAdapter(adapter);
@@ -57,8 +57,8 @@ public class ListFragment extends Fragment implements NotesRvAdapter.Listener {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDetach() {
+        super.onDetach();
         Objects.requireNonNull(getActivity()).finish();
         System.exit(0);
     }
@@ -74,9 +74,14 @@ public class ListFragment extends Fragment implements NotesRvAdapter.Listener {
 
         final RecyclerView recyclerView = currentFrameLayout.findViewById(R.id.notesRecyclerView);
 
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        if (shouldSetTwoSpan())
             recyclerView.setLayoutManager(new GridLayoutManager(currentFrameLayout.getContext(), 2));
         else
             recyclerView.setLayoutManager(new LinearLayoutManager(currentFrameLayout.getContext()));
+    }
+
+    private boolean shouldSetTwoSpan(){
+        return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE && getResources().getBoolean(R.bool.is_phone)
+                || getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT && !getResources().getBoolean(R.bool.is_phone);
     }
 }
