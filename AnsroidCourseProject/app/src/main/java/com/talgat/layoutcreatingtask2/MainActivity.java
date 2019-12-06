@@ -21,6 +21,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void showDetailsFragment(@NonNull final long id) {
         if (getSupportFragmentManager().findFragmentByTag(DetailsFragment.NAME) != null) {
             getSupportFragmentManager().popBackStack();

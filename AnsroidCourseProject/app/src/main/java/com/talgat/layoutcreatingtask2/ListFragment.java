@@ -57,13 +57,6 @@ public class ListFragment extends Fragment implements NotesRvAdapter.Listener {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        Objects.requireNonNull(getActivity()).finish();
-        System.exit(0);
-    }
-
-    @Override
     public void onNoteClick(long id) {
         ((MainActivity) getActivity()).showDetailsFragment(id);
     }
