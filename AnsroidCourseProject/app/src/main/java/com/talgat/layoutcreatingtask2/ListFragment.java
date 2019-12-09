@@ -67,13 +67,14 @@ public class ListFragment extends Fragment implements NotesRvAdapter.Listener {
 
         final RecyclerView recyclerView = currentFrameLayout.findViewById(R.id.notesRecyclerView);
 
-        if (shouldSetTwoSpan())
+        if (shouldSetTwoSpan()) {
             recyclerView.setLayoutManager(new GridLayoutManager(currentFrameLayout.getContext(), 2));
-        else
+        } else {
             recyclerView.setLayoutManager(new LinearLayoutManager(currentFrameLayout.getContext()));
+        }
     }
 
-    private boolean shouldSetTwoSpan(){
+    private boolean shouldSetTwoSpan() {
         return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE && getResources().getBoolean(R.bool.is_phone)
                 || getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT && !getResources().getBoolean(R.bool.is_phone);
     }
